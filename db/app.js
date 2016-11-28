@@ -3,7 +3,6 @@ const model = require('./model');
 let
     Pet = model.Pet,
     User = model.User;
-console.log('start:'+Date.now());
 (async () => {
     var user = await User.create({
         name: 'John',
@@ -27,4 +26,3 @@ console.log('start:'+Date.now());
     });
     console.log('created: ' + JSON.stringify(dog));
 })();
-console.log('end:'+Date.now());

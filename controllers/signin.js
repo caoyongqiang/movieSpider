@@ -1,5 +1,7 @@
 // sign in:
-
+const model = require('../db/model');
+let
+    Plan = model.Plan;
 var index = 0;
 
 module.exports = {
@@ -12,6 +14,19 @@ module.exports = {
     },
 
     'POST /signin': async (ctx, next) => {
+
+        (async () => {
+            var plan = await Plan.create({
+                type: 'javasctipt',
+                title: '函数式编程',
+                content: 'javasctipt编程实践中的函数式编程章节',
+                plan_date: '1478177566445',
+                start_date: '1478177566445',
+                finish_date: '1478177566445'
+            });
+            console.log('created: ' + JSON.stringify(plan));
+        })();
+
         index ++;
         let name = ctx.request.body.name || '路人甲';
         let user = {

@@ -1,2 +1,4 @@
 node_modules
 .vscode/
+front_end/build/
+front_end/node_modules
