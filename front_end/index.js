@@ -16,9 +16,11 @@ server.listen(serverConfig.socketPort);
 app.use(bodyParser());// WARNING
 app.use('/js', express.static('./client/build'));
 app.use('/css', express.static('./client/build'));
+app.use('/static/js', express.static('./client/static/js'));
+app.use('/static/css', express.static('./client/static/css'));
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/index.html');
+    res.sendFile(__dirname + '/client/views/index.html');
 });
 
 app.listen(serverConfig.httpPort, function () {

@@ -3,5 +3,5 @@ module.exports = {
     tag: '最新',
     page_limit: '10',
     sort: 'time',
-    movie_amount: '20'
+    movie_amount: '1000'
 }

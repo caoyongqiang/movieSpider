@@ -63,10 +63,11 @@ function fetchMovies(pageStart, {
             if (err) {
                 if (err.code == 'ETIMEDOUT' || err.code == 'ESOCKETTIMEDOUT') {
                     resolve(fetchMovies(pageStart, {
-                        type : 'movie',
-                        tag : '热门',
-                        page_limit : 20,
-                        sort : 'recommend'
+                        type : type,
+                        tag : tag,
+                        page_limit : page_limit,
+                        sort : sort,
+                        movieAmount: movieAmount
                     }, socket));
                 } else {
                     reject(err)

@@ -10,6 +10,6 @@ export function Spider(userPageUrl, socket) {
     getMovies(userPageUrl, socket).then(movies => {
         console.log('============\n');
         console.log('抓取电影信息成功，共'+movies.length+'部电影');
-        socket.emit('movie', movies.map(movie => (movie)));
+        socket.emit('movie', movies);
     });
 }

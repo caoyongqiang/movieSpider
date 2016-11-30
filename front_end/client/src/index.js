@@ -2,8 +2,8 @@ var echarts = require('echarts');
 var serverConfig = require('../../server.config');
 var socket = require('socket.io-client')(`http://localhost:${serverConfig.socketPort}`);
 var $ = require('jquery');
-var myChart = echarts.init(document.getElementById('main'));
-var echartParser = require('./echartParser');
+// var myChart = echarts.init(document.getElementById('main'));
+// var echartParser = require('./echartParser');
 var USER_NAME;
 $("#submit").click(function() {
     socket.emit('fetch start', {
@@ -92,7 +92,15 @@ socket.on('notice', function(data) {
     notice.html(data);
 });
 
-socket.on('movie', function(movie) {
-    console.log(movie[0]);
-    notice.html(movie[0].title+movie[0].rate+movie[0].url);
+socket.on('movie', function(movies) {
+    console.log(movies[0]);
+    console.log(movies[0]);
+    console.log(movies[0].title+movies[0].rate+movies[0].url);
+    console.log(movies[1].title+movies[0].rate+movies[0].url);
+    new Vue({
+        el: '#movies',
+        data: {
+            movies: movies
+        }
+    })
 })
