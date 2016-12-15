@@ -5,11 +5,11 @@ var $ = require('jquery');
 // var myChart = echarts.init(document.getElementById('main'));
 // var echartParser = require('./echartParser');
 var USER_NAME;
-$("#submit").click(function() {
-    socket.emit('fetch start', {
-        url: $("#url").val()
-    });
-})
+// $("#submit").click(function() {
+//     socket.emit('fetch start', {
+//         url: $("#url").val()
+//     });
+// })
 var dataStore = [];
 
 socket.on('data', function(data) {
@@ -97,10 +97,10 @@ socket.on('movie', function(movies) {
     console.log(movies[0]);
     console.log(movies[0].title+movies[0].rate+movies[0].url);
     console.log(movies[1].title+movies[0].rate+movies[0].url);
-    new Vue({
-        el: '#movies',
-        data: {
-            movies: movies
-        }
-    })
+    $("#tableList").html(template("listTable", {movies:movies}));
+    // $(document).ready(function() {
+    //     $('#listTable').DataTable({
+    //         ordering: true
+    //     });
+    // });
 })

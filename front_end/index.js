@@ -6,9 +6,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var serverConfig = require('./server.config');
 io.on('connection', function (socket) {
-    socket.on('fetch start', function (data) {
-        Spider('https://movie.douban.com/', socket);
-    });
+    Spider('https://movie.douban.com/', socket);
 });
 server.listen(serverConfig.socketPort);
 

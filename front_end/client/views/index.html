@@ -4,28 +4,43 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="learn javascript by www.liaoxuefeng.com">
-    <title>{{ title }}</title>
+    <title>豆瓣高分电影</title>
     <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <!--<link rel="stylesheet" href="/static/css/dataTables.bootstrap.css">-->
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/vue.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
+    <!--<script src="/static/js/jquery.dataTables.min.js"></script>-->
+    <script src="/static/js/template.js"></script>
 </head>
 
 <body>
-    <input type="text" id="url" placeholder="用户页的url，例如https://www.zhihu.com/people/starkwei" style="width:350px;">
-    <button id="submit">开始抓取</button>
     <p id="notice"></p>
-    <div id="movies">
-        <ul>
-            <li v-for="movie in movies">
-            {{ movie.title }}{{ movie.rate }}{{ movie.url }}
-            </li>
-        </ul>
+    <div class="table table-hover table-striped" id="tableList">
+        <div class="emptyList text-center">暂无记录</div>
     </div>
 </body>
 
 <script src="/js/bundle.js"></script>
-<script>
-    
+<script type="text/template" id="listTable">
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>电影</th>
+            <th style="cursor:pointer;">评分</th>
+            <th style="cursor:pointer;">链接</th>
+        </tr>
+        {{each movies as row i}}
+        <tr>
+            <td>{{row.title}}</td>
+            <td>
+                <div>{{row.rate}}</div>
+            </td>
+            <td><a target="_blank" href="{{row.url}}">{{row.url}}</a></td>
+            <!--<td>
+                <button class="btn btn-success" data-sellerId="{{row.sellerId}}">申请详情</button>
+            </td>-->
+        </tr>
+        {{/each}}
+    </table>
 </script>
 </html>
